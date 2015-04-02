@@ -3,7 +3,12 @@
 
   "name": "Github Release Downloads",
   "description": "This extension displays the number of downloads github releases have on the releases page.",
-  "version": "0.1",
+  "version": "0.1.1",
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
   "permissions": [
      "tabs", "http://github.com/*/*/releases", "https://github.com/*/*/releases"
   ],
