@@ -1,0 +1,20 @@
+{
+  "manifest_version": 2,
+
+  "name": "Github Release Downloads",
+  "description": "This extension displays the number of downloads github releases have on the releases page.",
+  "version": "0.1",
+  "permissions": [
+     "tabs", "http://github.com/*/*/releases", "https://github.com/*/*/releases"
+  ],
+  "content_scripts": [
+	{
+      "matches": [
+        "http://github.com/*/*/releases",
+		"https://github.com/*/*/releases"
+      ],
+      "js": ["releases.js"],
+	  "run_at": "document_end"
+    }
+  ]
+}
