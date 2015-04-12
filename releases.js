@@ -1,6 +1,9 @@
 //TODO async
 var xmlHttp = new XMLHttpRequest();
-xmlHttp.open( "GET", document.URL.replace( '//github.com', '//api.github.com/repos' ), false );
+xmlHttp.open( "GET",
+	document.URL.replace( '//github.com', '//api.github.com/repos' ).split( '/tag/' )[0],
+	false
+	);
 xmlHttp.send( null );
 var releases = JSON.parse( xmlHttp.responseText );
 var downloadMap = [];

@@ -10,13 +10,13 @@
     "128": "icon128.png"
   },
   "permissions": [
-     "tabs", "http://github.com/*/*/releases", "https://github.com/*/*/releases"
+     "tabs", "*://github.com/*/*/releases", "*://github.com/*/*/releases/tag/*"
   ],
   "content_scripts": [
 	{
       "matches": [
-        "http://github.com/*/*/releases",
-		"https://github.com/*/*/releases"
+        "*://github.com/*/*/releases",
+        "*://github.com/*/*/releases/tag/*"
       ],
       "js": ["releases.js"],
 	  "run_at": "document_end"
