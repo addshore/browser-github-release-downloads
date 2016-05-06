@@ -26,7 +26,7 @@ xmlHttp.onreadystatechange = function () {
         }
       }
       break;
-    default: console.log( 'Error: GitHub Release Donwload Count Request Errored.' );
+    default: console.log( 'Error: GitHub Release Download Count Request Errored.' );
   }
 };
 xmlHttp.open( 'GET',
