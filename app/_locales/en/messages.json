@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "GitHub Release Downloads",
+    "description": "The name of the application"
+  },
+  "appDescription": {
+    "message": "My Chrome Extension",
+    "description": "This extension displays the number of downloads GitHub releases have on the releases page."
+  }
+}
