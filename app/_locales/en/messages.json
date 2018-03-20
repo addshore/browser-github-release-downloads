@@ -4,7 +4,7 @@
     "description": "The name of the application"
   },
   "appDescription": {
-    "message": "My Chrome Extension",
-    "description": "This extension displays the number of downloads GitHub releases have on the releases page."
+    "message": "This extension displays the number of downloads GitHub releases have on the releases page.",
+    "description": "The description of the application"
   }
 }

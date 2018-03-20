@@ -1,4 +1,4 @@
-// generated on 2016-05-06 using generator-chrome-extension 0.5.6
+// generated on 2018-03-20 using generator-chrome-extension 0.7.0
 import gulp from 'gulp';
 import gulpLoadPlugins from 'gulp-load-plugins';
 import del from 'del';
@@ -57,7 +57,12 @@ gulp.task('html',  () => {
     .pipe($.if('*.js', $.uglify()))
     .pipe($.if('*.css', $.cleanCss({compatibility: '*'})))
     .pipe($.sourcemaps.write())
-    .pipe($.if('*.html', $.htmlmin({removeComments: true, collapseWhitespace: true})))
+    .pipe($.if('*.html', $.htmlmin({
+      collapseWhitespace: true,
+      minifyCSS: true,
+      minifyJS: true,
+      removeComments: true
+    })))
     .pipe(gulp.dest('dist'));
 });
 
@@ -89,7 +94,7 @@ gulp.task('babel', () => {
 
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
-gulp.task('watch', ['lint', 'babel', 'html'], () => {
+gulp.task('watch', ['lint', 'babel'], () => {
   $.livereload.listen();
 
   gulp.watch([
@@ -119,7 +124,7 @@ gulp.task('wiredep', () => {
 gulp.task('package', function () {
   var manifest = require('./dist/manifest.json');
   return gulp.src('dist/**')
-      .pipe($.zip('chrome commons upload-' + manifest.version + '.zip'))
+      .pipe($.zip('chrome github release downloads-' + manifest.version + '.zip'))
       .pipe(gulp.dest('package'));
 });
 
