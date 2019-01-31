@@ -13,7 +13,7 @@ xmlHttp.onreadystatechange = function () {
       var downloadMap = [];
       for (var i in releases) {
         for (var j in releases[i].assets) {
-          downloadMap[releases[i].assets[j].browser_download_url] = releases[i].assets[j].download_count;
+          downloadMap[decodeURI(releases[i].assets[j].browser_download_url)] = releases[i].assets[j].download_count;
         }
       }
       var els = document.getElementsByTagName('a');
