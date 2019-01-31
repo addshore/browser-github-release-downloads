@@ -22,7 +22,13 @@ xmlHttp.onreadystatechange = function () {
         if ( el.href in downloadMap ) {
           var dwnCount = document.createElement( 'small' );
           dwnCount.appendChild( document.createTextNode( ' - ' + downloadMap[el.href] + ' downloads' ) )
-          el.appendChild( dwnCount );
+          var sizes = el.getElementsByTagName('small');
+          if (sizes) {
+            var size = sizes[0];
+            if (size) {
+              el.appendChild(dwnCount, size);
+            }
+          }
         }
       }
       break;
