@@ -17,16 +17,27 @@ xmlHttp.onreadystatechange = function () {
         }
       }
       var els = document.getElementsByTagName('a');
+      //var locale = getLocale();
+
       for (var i = 0, l = els.length; i < l; i++) {
         var el = els[i];
         if ( el.href in downloadMap ) {
           var dwnCount = document.createElement( 'small' );
-          dwnCount.appendChild( document.createTextNode( ' - ' + downloadMap[el.href] + ' downloads' ) )
-          var sizes = el.getElementsByTagName('small');
+          dwnCount.className = 'githubdownloadscounter text-gray float-right'; // Right style
+          var d = downloadMap[el.href];
+          //if (locale.length) {
+          //  d = d.toLocaleString("en-US");
+          //}
+          dwnCount.appendChild( document.createTextNode(d) );
+          var dwnIcon = document.createElement( 'span' );
+          dwnCount.appendChild( dwnIcon );
+          var sizes = el.parentNode.getElementsByTagName('small');
           if (sizes) {
             var size = sizes[0];
             if (size) {
-              el.appendChild(dwnCount, size);
+              el.parentNode.insertBefore(dwnCount, size);
+              dwnCount.style.minWidth = (dwnCount.offsetWidth + 3) + 'px';
+              dwnCount.style.flexGrow = '2';
             }
           }
         }
