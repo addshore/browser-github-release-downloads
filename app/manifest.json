@@ -29,6 +29,9 @@
       "js": [
         "scripts/contentscript.js"
       ],
+      "css": [
+        "resources/style.css"
+      ],
       "run_at": "document_end",
       "all_frames": false
     }
