@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "GitHub 发行版下载",
+    "description": "应用名称"
+  },
+  "appDescription": {
+    "message": "该扩展程序在 GitHub 发行版页面显示下载次数。",
+    "description": "应用描述"
+  }
+}
