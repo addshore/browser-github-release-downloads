@@ -1,8 +1,8 @@
-# Chrome GitHub release downloads
+# GitHub release downloads
 
 ![GitHubCounter Icon](https://raw.githubusercontent.com/addshore/chrome-github-release-downloads/master/app/images/icon128.png)
 
-A Chrome extension that displays release download counters.
+A browser extension that displays release download counters.
 
 ## How to install?
 
