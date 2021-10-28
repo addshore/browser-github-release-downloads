@@ -9,8 +9,8 @@ A browser extension that displays release download counters.
 Download it from:
 
  - Chrome: https://chrome.google.com/webstore/detail/github-release-downloads/ncgomhdgmkicjeclohgokhciihpfdlhi
- - Mozilla: Pending approval
- - Edge: Pending approval
+ - Mozilla: https://addons.mozilla.org/en-US/firefox/addon/github-release-download-count/ (pending review)
+ - Edge: https://microsoftedge.microsoft.com/addons/detail/dafnpnmnbcjmjanjmcffnihflihgchaj (pending review)
  - Safari: Use [GitHubCounter](https://github.com/aonez/GitHubCounter) from [@aonez](https://github.com/aonez), which is based on this extension.
 
 ### How it works?
