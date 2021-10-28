@@ -42,6 +42,16 @@ This extension uses [webextension-toolbox](https://github.com/HaNdTriX/webextens
     npm run build opera
     npm run build edge
 
+### For releasing
+
+- Bump the version number in:
+  - package.json
+  - manifest.json
+- Update the CHANGELOG.md
+- Tag the change on Github (vx.x.x), DO NOT make a Github Release, this is done by Github Actions
+- Wait for the Github actions to build the files
+- See the STORE_NOTES.md file for helpful details on uploading...
+
 ### Environment
 
 The build tool also defines a variable named `process.env.NODE_ENV` in your scripts. 
