@@ -7,7 +7,6 @@
     "build": "webextension-toolbox build --no-minimize"
   },
   "devDependencies": {
-    "webextension-toolbox": "3.0.0",
-    "chalk": "^4.1.2"
+    "webextension-toolbox": "^4.0.0"
   }
 }
