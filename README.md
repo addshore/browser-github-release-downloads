@@ -1,14 +1,17 @@
 # GitHub release downloads
 
-![GitHubCounter Icon](https://raw.githubusercontent.com/addshore/chrome-github-release-downloads/master/app/images/icon128.png)
+![GitHubCounter Icon](https://raw.githubusercontent.com/addshore/browser-github-release-downloads/master/app/images/icon128.png)
 
 A browser extension that displays release download counters.
 
 ## How to install?
 
 Download it from:
- - [Google Chrome store](https://chrome.google.com/webstore/detail/github-release-downloads/ncgomhdgmkicjeclohgokhciihpfdlhi)
- - Using Safari? Use [GitHubCounter](https://github.com/aonez/GitHubCounter) from [@aonez](https://github.com/aonez), which is based on this extension.
+
+ - Chrome: https://chrome.google.com/webstore/detail/github-release-downloads/ncgomhdgmkicjeclohgokhciihpfdlhi
+ - Mozilla: Pending approval
+ - Edge: Pending approval
+ - Safari: Use [GitHubCounter](https://github.com/aonez/GitHubCounter) from [@aonez](https://github.com/aonez), which is based on this extension.
 
 ### How it works?
 
