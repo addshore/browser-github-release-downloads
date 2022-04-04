@@ -20,7 +20,7 @@ jobs:
           - "edge"
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v2.4.1
+      - uses: actions/setup-node@v3.1.0
         with:
           node-version: 16
       - run: npm install
