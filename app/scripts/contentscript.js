@@ -33,17 +33,17 @@ xmlHttp.onreadystatechange = function () {
           dwnCount.appendChild(document.createTextNode(d));
           var dwnIcon = document.createElement('span');
           dwnCount.appendChild(dwnIcon);
-          var sizes = el.parentNode.querySelectorAll("[data-test-selector=asset-size-label]");
-          if (!sizes) {
-            console.log("No size elements found to attached download count to");
+          var sizeContainer = el.parentNode.parentNode.children[1];
+          if (!sizeContainer) {
+            console.log("No size parent element selectable to attached download count to");
             continue;
           }
-          var size = sizes[0];
+          var size = sizeContainer.children[0];
           if (!size) {
             console.log("No size element selectable to attached download count to");
             continue;
           }
-          el.parentNode.insertBefore(dwnCount, size);
+          sizeContainer.insertBefore(dwnCount, size);
           dwnCount.style.minWidth = dwnCount.offsetWidth + 3 + 'px';
           dwnCount.style.flexGrow = '2';
           dwnCount.style.marginLeft = '5px';
