@@ -31,6 +31,16 @@ This extension uses [webextension-toolbox](https://github.com/HaNdTriX/webextens
 
     $ npm install
 
+### ERR_OSSL_EVP_UNSUPPORTED
+
+If you get this error, try the following...
+
+```sh
+export NODE_OPTIONS=--openssl-legacy-provider
+```
+
+https://stackoverflow.com/questions/69394632/webpack-build-failing-with-err-ossl-evp-unsupported
+
 ### While developing
 
     npm run dev chrome
