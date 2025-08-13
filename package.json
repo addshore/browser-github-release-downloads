@@ -7,6 +7,6 @@
     "build": "webextension-toolbox build --no-minimize"
   },
   "devDependencies": {
-    "webextension-toolbox": "^4.0.0"
+    "@webextension-toolbox/webextension-toolbox": "^7.1.1"
   }
 }
