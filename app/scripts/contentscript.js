@@ -48,7 +48,6 @@ xmlHttp.onreadystatechange = function () {
           }
           sizeContainer.insertBefore(dwnCount, size);
           dwnCount.style.minWidth = dwnCount.offsetWidth + 3 + 'px';
-          dwnCount.style.flexGrow = '2';
           dwnCount.style.marginLeft = '5px';
         }
       }
