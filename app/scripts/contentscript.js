@@ -12,21 +12,24 @@ xmlHttp.onreadystatechange = function () {
     case 4:
       // COMPLETED
       var releases = JSON.parse(xmlHttp.responseText);
-      var downloadMap = [];
+      var downloadMap = new Map()
       for (var i in releases) {
         for (var j in releases[i].assets) {
           // browser_download_url is a full URL to the resource
-          downloadMap[decodeURI(releases[i].assets[j].browser_download_url)] = releases[i].assets[j].download_count;
+          var downLink = decodeURI(releases[i].assets[j].browser_download_url)
+            // .slice(18)
+          downloadMap.set(downLink, releases[i].assets[j].download_count)
         }
       }
       var els = document.getElementsByTagName('a');
       //var locale = getLocale();
       for (var i = 0, l = els.length; i < l; i++) {
         var el = els[i];
-        if (el.href in downloadMap) {
+        var link = el.href.startsWith('/') ? "https://github.com" + el.href : el.href
+        if (downloadMap.has(link)) {
           var dwnCount = document.createElement('small');
           dwnCount.className = 'githubdownloadscounter text-gray float-right'; // Right style
-          var d = downloadMap[el.href];
+          var d = downloadMap.get(link);
           //if (locale.length) {
           //  d = d.toLocaleString("en-US");
           //}
