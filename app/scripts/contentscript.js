@@ -9,6 +9,7 @@
 
     const response = await fetch(apiUrl);
     if (!response.ok) {
+      // noinspection ExceptionCaughtLocallyJS
       throw new Error(`GitHub API request failed: ${response.status}`);
     }
 
@@ -59,7 +60,21 @@
       }
     }
 
+    /**
+     * Observes DOM changes to handle dynamically loaded assets.
+     */
+    function observeDOM() {
+      const observer = new MutationObserver(() => {
+        processAnchors();
+      });
+      observer.observe(document.body, {childList: true, subtree: true});
+    }
+
+    // Initial processing
     processAnchors();
+
+    // Watch for future DOM changes
+    observeDOM();
 
   } catch (err) {
     console.error('[GitHub Download Counter] Error:', err);
