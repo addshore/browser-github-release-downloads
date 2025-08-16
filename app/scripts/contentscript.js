@@ -128,6 +128,6 @@
     }
 
   } catch (err) {
-    console.error('[GitHub Download Counter] Error:', err);
+    console.error('[GitHub Release Downloads] Error:', err);
   }
 })();
