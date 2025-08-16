@@ -15,8 +15,7 @@
   "content_scripts": [
     {
       "matches": [
-        "*://github.com/*/*/releases",
-        "*://github.com/*/*/releases/tag/*"
+        "*://github.com/*"
       ],
       "js": [
         "scripts/contentscript.js"
@@ -24,12 +23,24 @@
       "css": [
         "styles/style.css"
       ],
-      "run_at": "document_end",
+      "run_at": "document_start",
       "all_frames": false
     }
   ],
-  "permissions": [],
+  "permissions": [
+    "scripting"
+  ],
   "host_permissions": [
     "https://api.github.com/*"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "scripts/injected.js"
+      ],
+      "matches": [
+        "*://github.com/*"
+      ]
+    }
   ]
 }

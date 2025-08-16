@@ -2,25 +2,62 @@
 
 (async () => {
   try {
-    // Build GitHub API URL from current document URL
-    const apiUrl = document.URL
-      .replace('//github.com', '//api.github.com/repos')
-      .split('/tag/')[0];
-
-    const response = await fetch(apiUrl);
-    if (!response.ok) {
-      // noinspection ExceptionCaughtLocallyJS
-      throw new Error(`GitHub API request failed: ${response.status}`);
-    }
-
-    const releases = await response.json();
+    // URL patterns to check against
+    const releasesUrlPattern = new URLPattern({pathname: '/:user/:repo/releases*'});
+    // URL → count
     const downloadMap = new Map();
 
-    // Build download map: URL → count
-    for (const release of releases) {
-      for (const asset of release.assets || []) {
-        const url = decodeURI(asset.browser_download_url);
-        downloadMap.set(url, asset.download_count);
+    /**
+     * Override the pushState method on page load to detect dynamic page loads.
+     */
+    function hookPushState() {
+      document.addEventListener('DOMContentLoaded', () => {
+        const script = document.createElement('script');
+        script.setAttribute('type', 'text/javascript');
+        // Determine browser: Firefox || Chrome
+        const browserAPI = window.browser || window.chrome;
+        const script_url = browserAPI.runtime.getURL('/scripts/injected.js')
+        script.setAttribute('src', script_url);
+        document.head.appendChild(script);
+      });
+    }
+
+    /**
+     * Check if url matches that of a release page.
+     */
+    function checkUrlPattern(url) {
+      try {
+        const parsedUrl = new URL(url);
+        return releasesUrlPattern.test(parsedUrl);
+      } catch (e) {
+        // Invalid URL format
+        return false;
+      }
+    }
+
+    /**
+     * Build download map: URL → count if on release page.
+     */
+    async function getReleaseUrls() {
+      // Build GitHub API URL from current document URL
+      const apiUrl = document.URL
+        .replace('//github.com', '//api.github.com/repos')
+        .split('/releases')[0]
+        .concat('/releases');
+
+      const response = await fetch(apiUrl);
+      if (!response.ok) {
+        // noinspection ExceptionCaughtLocallyJS
+        throw new Error(`GitHub API request failed: ${response.status}`);
+      }
+
+      const releases = await response.json();
+
+      for (const release of releases) {
+        for (const asset of release.assets || []) {
+          const url = decodeURI(asset.browser_download_url);
+          downloadMap.set(url, asset.download_count);
+        }
       }
     }
 
@@ -70,11 +107,25 @@
       observer.observe(document.body, {childList: true, subtree: true});
     }
 
-    // Initial processing
-    processAnchors();
+    // Script entry point
+    hookPushState();
 
-    // Watch for future DOM changes
-    observeDOM();
+    // If releases page is dynamically loaded
+    window.addEventListener('pushStateChange', async (event) => {
+      const {newUrl} = event.detail;
+      if (checkUrlPattern(newUrl)) {
+        await getReleaseUrls();
+        processAnchors();
+        observeDOM();
+      }
+    });
+
+    // If releases page is reloaded or directly loaded
+    if (checkUrlPattern(window.location.href)) {
+      await getReleaseUrls();
+      processAnchors();
+      observeDOM();
+    }
 
   } catch (err) {
     console.error('[GitHub Download Counter] Error:', err);
