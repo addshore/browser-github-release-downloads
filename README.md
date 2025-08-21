@@ -48,6 +48,13 @@ https://stackoverflow.com/questions/69394632/webpack-build-failing-with-err-ossl
     npm run dev opera
     npm run dev edge
 
+If you have the browsers installed, you acn build and automatically open the extension in the browser.
+
+    npm run dev:chrome
+    npm run dev:firefox
+    npm run dev:opera
+    npm run dev:edge
+
 ### For builds
 
     npm run build chrome
