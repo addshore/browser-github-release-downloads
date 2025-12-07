@@ -23,10 +23,10 @@ Code: https://github.com/addshore/browser-github-release-downloads
 Support me: https://www.buymeacoffee.com/addshore
 ```
 
-## [Chrome](https://chrome.google.com/webstore/devconsole) @ 1.3.4
+## [Chrome](https://chrome.google.com/webstore/devconsole) @ 1.4.0 (submitted)
 
-## [Mozilla](https://addons.mozilla.org/en-US/developers/) @ 1.3.4
+## [Mozilla](https://addons.mozilla.org/en-US/developers/) @ 1.4.1 (submitted)
 
-## [Edge](https://partner.microsoft.com/en-us/dashboard/microsoftedge/overview) @ 1.3.4
+## [Edge](https://partner.microsoft.com/en-us/dashboard/microsoftedge/overview) @ 1.4.1 (submitted)
 
 ## [Opera](https://addons.opera.com/developer/) @ NOT PUBLISHED
