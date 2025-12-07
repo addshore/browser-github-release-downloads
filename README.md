@@ -66,7 +66,7 @@ If you have the browsers installed, you acn build and automatically open the ext
 
 - Bump the version number in:
   - package.json
-  - manifest.json
+  - app/manifest.json
 - Update the CHANGELOG.md
 - Tag the change on Github (vx.x.x), DO NOT make a Github Release, this is done by Github Actions
 - Wait for the Github actions to build the files
