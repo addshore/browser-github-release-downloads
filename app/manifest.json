@@ -1,6 +1,6 @@
 {
   "name": "__MSG_appName__",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "manifest_version": 3,
   "description": "__MSG_appDescription__",
   "icons": {
@@ -30,6 +30,11 @@
   "host_permissions": [
     "https://api.github.com/*"
   ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{304d63ad-222b-46a0-8c59-5a22ab597bee}"
+    }
+  },
   "web_accessible_resources": [
     {
       "resources": [

@@ -1,3 +1,7 @@
+1.4.1
+
+Added browser_specific_settings gecko id for Firefox extension store compliance
+
 1.4.0
 
 Manifest v3
