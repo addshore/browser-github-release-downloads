@@ -4,9 +4,13 @@
   "description": "github-release-downloads",
   "scripts": {
     "dev": "webextension-toolbox dev",
-    "build": "webextension-toolbox build --no-minimize"
+    "build": "webextension-toolbox build --no-minimize",
+    "dev:chrome": "npm run build -- chrome && sh ./scripts/open-chrome.sh $(pwd)/dist/chrome https://github.com/huggle/huggle3-qt-lx/releases/tag/3.4.13",
+    "dev:edge": "npm run build -- chrome && sh ./scripts/open-edge.sh $(pwd)/dist/chrome https://github.com/huggle/huggle3-qt-lx/releases/tag/3.4.13",
+    "dev:opera": "npm run build -- chrome && sh ./scripts/open-opera.sh $(pwd)/dist/chrome https://github.com/huggle/huggle3-qt-lx/releases/tag/3.4.13",
+    "dev:firefox": "npm run build -- firefox && sh ./scripts/open-firefox.sh $(pwd)/dist/firefox https://github.com/huggle/huggle3-qt-lx/releases/tag/3.4.13"
   },
   "devDependencies": {
-    "webextension-toolbox": "^4.0.0"
+    "@webextension-toolbox/webextension-toolbox": "^7.1.1"
   }
 }

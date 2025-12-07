@@ -1,7 +1,7 @@
 {
   "name": "__MSG_appName__",
   "version": "1.3.4",
-  "manifest_version": 2,
+  "manifest_version": 3,
   "description": "__MSG_appDescription__",
   "icons": {
     "16": "images/icon16.png",
@@ -9,16 +9,10 @@
     "128": "images/icon128.png"
   },
   "default_locale": "en",
-  "background": {
-    "scripts": [
-      "scripts/background.js"
-    ]
-  },
   "content_scripts": [
     {
       "matches": [
-        "*://github.com/*/*/releases",
-        "*://github.com/*/*/releases/tag/*"
+        "*://github.com/*"
       ],
       "js": [
         "scripts/contentscript.js"
@@ -26,8 +20,24 @@
       "css": [
         "styles/style.css"
       ],
-      "run_at": "document_end",
+      "run_at": "document_start",
       "all_frames": false
+    }
+  ],
+  "permissions": [
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://api.github.com/*"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "scripts/injected.js"
+      ],
+      "matches": [
+        "*://github.com/*"
+      ]
     }
   ]
 }
