@@ -11,6 +11,7 @@
     "dev:firefox": "npm run build -- firefox && sh ./scripts/open-firefox.sh $(pwd)/dist/firefox https://github.com/huggle/huggle3-qt-lx/releases/tag/3.4.13"
   },
   "devDependencies": {
-    "@webextension-toolbox/webextension-toolbox": "^7.1.1"
+    "@webextension-toolbox/webextension-toolbox": "^7.1.1",
+    "playwright": "^1.60.0"
   }
 }

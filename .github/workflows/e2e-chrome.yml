@@ -1,0 +1,88 @@
+name: E2E Chrome
+
+on:
+  pull_request:
+    branches: [master]
+
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Chrome extension
+        run: npm run build chrome
+
+      - name: Install Playwright and Chromium
+        run: npx playwright install chromium --with-deps
+
+      - name: Run E2E test
+        id: e2e
+        run: xvfb-run --auto-servernum -- node tests/e2e.js
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload screenshot artifact
+        id: upload-screenshot
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: extension-e2e-screenshot
+          path: screenshot.png
+          if-no-files-found: warn
+
+      - name: Post PR comment
+        if: always() && github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        env:
+          E2E_OUTCOME: ${{ steps.e2e.outcome }}
+          COUNTER_COUNT: ${{ steps.e2e.outputs.counter_count }}
+          ARTIFACT_URL: ${{ steps.upload-screenshot.outputs.artifact-url }}
+        with:
+          script: |
+            const outcome    = process.env.E2E_OUTCOME;
+            const counters   = process.env.COUNTER_COUNT || 'unknown';
+            const artifactUrl = process.env.ARTIFACT_URL;
+
+            const emoji  = outcome === 'success' ? '✅' : '❌';
+            const status = outcome === 'success' ? 'passed' : 'FAILED';
+
+            const screenshotLine = artifactUrl
+              ? `📸 **[Download screenshot](${artifactUrl})**`
+              : '_Screenshot not available._';
+
+            const resultLine = outcome === 'success'
+              ? `**Download counters injected on page:** ${counters}`
+              : '**No download counters were found** — the extension may not have injected correctly.';
+
+            const body = [
+              `## 🧩 Chrome Extension E2E Test ${emoji}`,
+              '',
+              `The extension E2E test **${status}**.`,
+              '',
+              resultLine,
+              '',
+              screenshotLine,
+              '',
+              '> Tested by loading the built Chrome extension in Chromium, navigating to',
+              '> `https://github.com/huggle/huggle3-qt-lx/releases/tag/3.4.13`,',
+              '> and asserting `.githubdownloadscounter` elements were injected into the page.',
+            ].join('\n');
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              issue_number: context.issue.number,
+              body,
+            });
