@@ -72,9 +72,9 @@
         const href = el.getAttribute('href');
         if (!href) continue;
 
-        const linkUrl = href.startsWith('/')
+        const linkUrl = decodeURI(href.startsWith('/')
           ? `https://github.com${href}`
-          : href;
+          : href);
 
         if (!downloadMap.has(linkUrl)) continue;
 
