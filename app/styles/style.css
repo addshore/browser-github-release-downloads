@@ -6,13 +6,34 @@ details div.Box div.Box-body small {
   padding-right: 0.69em;
 }
 
+.githubdownloadsicon,
 .githubdownloadscounter span {
-  display: block;
   width: 13px;
   height: 17px;
-  float: right;
   background-size: 10px;
   background-repeat: no-repeat;
-  background-position: center right;
   background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMyIgaGVpZ2h0PSIyNyIgdmlld0JveD0iMCAwIDIzIDI3Ij48ZGVmcz48cGF0aCBkPSJNMjEuOSAxNUMyMS45IDE1IDEzLjIgMjQuOSAxMi40IDI2IDExLjUgMjcuMSAxMC4xIDI2LjMgMTAuMSAyNi4zIDEwLjEgMjYuMyAxLjMgMTYuNiAwLjMgMTQuOSAtMC43IDEzLjMgMS4yIDEzIDEuMiAxM0w2IDEzIDYgMUM2IDAuNCA2LjQgMCA3IDBMMTUgMEMxNS42IDAgMTYgMC40IDE2IDFMMTYgMTMgMjAuNyAxM0MyMy4xIDEzIDIxLjkgMTUgMjEuOSAxNVoiLz48L2RlZnM+PGcgZmlsbD0iIzU4NjA2OSI+PHBhdGggZD0iTTIxLjEgMTQuNEMyMS4xIDE0LjQgMjEuMSAxNC40IDIxLjEgMTQuMyAyMS4yIDE0LjIgMjEuMiAxNC4xIDIxLjIgMTQuMSAyMS4xIDE0IDIxIDE0IDIwLjcgMTRMMTUgMTQgMTUgMSA3IDEgNyAxNCAxLjMgMTRDMS4yIDE0IDEuMSAxNCAxLjEgMTQuMSAwLjkgMTQuMiAxIDE0LjEgMS4yIDE0LjQgMS41IDE1IDMuMiAxNyA1LjcgMTkuOCA1LjggMjAgNS44IDIwIDUuOSAyMC4xIDcgMjEuMyA4LjEgMjIuNiA5LjMgMjMuOSA5LjcgMjQuNCAxMC4xIDI0LjggMTAuNCAyNS4yIDEwLjUgMjUuMyAxMC42IDI1LjQgMTAuNyAyNS41IDEwLjcgMjUuNSAxMC43IDI1LjUgMTAuOCAyNS41IDExIDI1LjYgMTEuMiAyNS42IDExLjQgMjUuNiAxMS41IDI1LjUgMTEuNSAyNS41IDExLjYgMjUuNCAxMiAyNC45IDEzLjYgMjMgMTYuMyAxOS45IDE2LjMgMTkuOSAxNi4zIDE5LjkgMTYuNCAxOS44IDE3LjQgMTguNiAxOC41IDE3LjMgMTkuNyAxNiAyMCAxNS42IDIwLjQgMTUuMiAyMC43IDE0LjggMjAuOSAxNC42IDIxIDE0LjUgMjEuMSAxNC40WiIgc3R5bGU9InN0cm9rZS13aWR0aDoyO3N0cm9rZTojNTg2MDY5Ii8+PC9nPjwvc3ZnPg==);
+}
+
+.githubdownloadscounter span {
+  display: block;
+  float: right;
+  background-position: center right;
+}
+
+.githubdownloadstotal {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 5px;
+  padding: 0 6px;
+  border-radius: 2em;
+  background-color: rgba(175, 184, 193, 0.2);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+}
+
+.githubdownloadstotal .githubdownloadsicon {
+  margin-right: 4px;
+  background-position: center;
 }
